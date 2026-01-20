@@ -112,20 +112,20 @@ import torch
 # z = y ** 2
 # z.backward()
 # print(x.grad)  # Should print tensor(36.0) because dz/dx = 18x, at x=2 → 18*2 = 36
-w = torch.tensor(0.5, requires_grad=True)
-x = torch.tensor(3.0)
-y = torch.tensor(9.0)
+# w = torch.tensor(0.5, requires_grad=True)
+# x = torch.tensor(3.0)
+# y = torch.tensor(9.0)
 
-for epoch in range(5):
-    y_pred = w * x
-    loss = (y_pred - y) ** 2
+# for epoch in range(5):
+#     y_pred = w * x
+#     loss = (y_pred - y) ** 2
 
-    loss.backward()
-    print(f"\nEpoch {epoch+1}:")
-    print(f"loss: {loss.item():.4f}")
-    print(f"Gradient of loss w.r.t w: {w.grad.item()}")
+#     loss.backward()
+#     print(f"\nEpoch {epoch+1}:")
+#     print(f"loss: {loss.item():.4f}")
+#     print(f"Gradient of loss w.r.t w: {w.grad.item()}")
 
-    with torch.no_grad():
-        w -= 0.1 * w.grad
-        w.grad.zero_()
-        print(f"Updated weight: {w.item()}")
+#     with torch.no_grad():
+#         w -= 0.1 * w.grad
+#         w.grad.zero_()
+#         print(f"Updated weight: {w.item()}")
