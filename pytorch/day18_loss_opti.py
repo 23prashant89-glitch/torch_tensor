@@ -145,78 +145,80 @@ import torch.optim as optim
 
 # print(f"Trained Weights: {model.weight.item()}, Bias: {model.bias.item()}")
 # Define a single model for comparison
-model = nn.Linear(1, 1)
+# model = nn.Linear(1, 1)
 
-# Data for training
-x = torch.tensor([[1.0], [2.0], [3.0], [4.0]])
-y = torch.tensor([[5.0], [8.0], [11.0], [14.0]])
+# # Data for training
+# x = torch.tensor([[1.0], [2.0], [3.0], [4.0]])
+# y = torch.tensor([[5.0], [8.0], [11.0], [14.0]])
 
-# Function to train the model with a specified optimizer
-def train_and_compare(optimizer_name, learning_rate=0.01):
-    model = nn.Linear(1, 1)  # Reinitialize model for each optimizer
-    loss_fn = nn.MSELoss()
-    optimizer = optim.SGD(model.parameters(), lr=learning_rate) if optimizer_name == 'SGD' else optim.Adam(model.parameters(), lr=learning_rate)
+# # Function to train the model with a specified optimizer
+# def train_and_compare(optimizer_name, learning_rate=0.01):
+#     model = nn.Linear(1, 1)  # Reinitialize model for each optimizer
+#     loss_fn = nn.MSELoss()
+#     optimizer = optim.SGD(model.parameters(), lr=learning_rate) if optimizer_name == 'SGD' else optim.Adam(model.parameters(), lr=learning_rate)
 
-    for epoch in range(20):
-        y_pred = model(x)
-        loss = loss_fn(y_pred, y)
+#     for epoch in range(20):
+#         y_pred = model(x)
+#         loss = loss_fn(y_pred, y)
 
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+#         optimizer.zero_grad()
+#         loss.backward()
+#         optimizer.step()
 
-    return loss.item()
+#     return loss.item()
 
-# Train with SGD
-final_loss_sgd = train_and_compare('SGD', learning_rate=0.01)
-print(f"Final Loss with SGD: {final_loss_sgd:.4f}")
+# # Train with SGD
+# final_loss_sgd = train_and_compare('SGD', learning_rate=0.01)
+# print(f"Final Loss with SGD: {final_loss_sgd:.4f}")
 
-# Train with Adam
-final_loss_adam = train_and_compare('Adam', learning_rate=0.01)
-print(f"Final Loss with Adam: {final_loss_adam:.4f}")
+# # Train with Adam
+# final_loss_adam = train_and_compare('Adam', learning_rate=0.01)
+# print(f"Final Loss with Adam: {final_loss_adam:.4f}")
 
-# Train with learning rate scheduler
-def train_with_scheduler(optimizer_name, learning_rate=0.01, epochs=30):
-    model = nn.Linear(1, 1)  # Reinitialize model for each optimizer
-    loss_fn = nn.MSELoss()
-    optimizer = optim.SGD(model.parameters(), lr=learning_rate) if optimizer_name == 'SGD' else optim.Adam(model.parameters(), lr=learning_rate)
+# # Train with learning rate scheduler
+# def train_with_scheduler(optimizer_name, learning_rate=0.01, epochs=30):
+#     model = nn.Linear(1, 1)  # Reinitialize model for each optimizer
+#     loss_fn = nn.MSELoss()
+#     optimizer = optim.SGD(model.parameters(), lr=learning_rate) if optimizer_name == 'SGD' else optim.Adam(model.parameters(), lr=learning_rate)
     
-    # Learning Rate Scheduler
-    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
+#     # Learning Rate Scheduler
+#     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
-    losses = []
-    for epoch in range(epochs):
-        y_pred = model(x)
-        loss = loss_fn(y_pred, y)
+#     losses = []
+#     for epoch in range(epochs):
+#         y_pred = model(x)
+#         loss = loss_fn(y_pred, y)
 
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+#         optimizer.zero_grad()
+#         loss.backward()
+#         optimizer.step()
         
-        # Step the scheduler
-        scheduler.step()
+#         # Step the scheduler
+#         scheduler.step()
 
-        losses.append(loss.item())
-        if (epoch + 1) % 10 == 0:
-            print(f"Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.4f}, Learning Rate: {scheduler.get_last_lr()[0]:.6f}")
+#         losses.append(loss.item())
+#         if (epoch + 1) % 10 == 0:
+#             print(f"Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.4f}, Learning Rate: {scheduler.get_last_lr()[0]:.6f}")
 
-    return losses
+#     return losses
 
-# Train with SGD and learning rate scheduler
-losses_sgd = train_with_scheduler('SGD', learning_rate=0.01)
-print(f"Final Loss with SGD: {losses_sgd[-1]:.4f}")
+# # Train with SGD and learning rate scheduler
+# losses_sgd = train_with_scheduler('SGD', learning_rate=0.01)
+# print(f"Final Loss with SGD: {losses_sgd[-1]:.4f}")
 
-# Train with Adam and learning rate scheduler
-losses_adam = train_with_scheduler('Adam', learning_rate=0.01)
-print(f"Final Loss with Adam: {losses_adam[-1]:.4f}")
+# # Train with Adam and learning rate scheduler
+# losses_adam = train_with_scheduler('Adam', learning_rate=0.01)
+# print(f"Final Loss with Adam: {losses_adam[-1]:.4f}")
 
-# Plotting the loss curves
-import matplotlib.pyplot as plt
+# # Plotting the loss curves
+# import matplotlib.pyplot as plt
 
-plt.plot(losses_sgd, label='SGD Loss')
-plt.plot(losses_adam, label='Adam Loss')
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
-plt.title('Loss Curve')
-plt.legend()
-plt.show()
+# plt.plot(losses_sgd, label='SGD Loss')
+# plt.plot(losses_adam, label='Adam Loss')
+# plt.xlabel('Epochs')
+# plt.ylabel('Loss')
+# plt.title('Loss Curve')
+# plt.legend()
+# plt.show()
+with open ("training_loop.py", "w") as file:
+    print(file)
