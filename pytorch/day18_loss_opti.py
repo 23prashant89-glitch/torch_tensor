@@ -220,5 +220,5 @@ import torch.optim as optim
 # plt.title('Loss Curve')
 # plt.legend()
 # plt.show()
-with open ("training_loop.py", "w") as file:
-    print(file)
+# with open ("training_loop.py", "w") as file:
+    # print(file)
